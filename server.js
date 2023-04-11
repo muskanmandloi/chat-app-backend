@@ -8,11 +8,7 @@ const cors = require('cors');
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+
 app.use('/users', userRoutes)
 require('./connection')
 
@@ -20,8 +16,8 @@ const server = require('http').createServer(app);
 const PORT = 5001;
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'https://chat-backend-meyx.onrender.com',
-    methods: ['GET', 'POST','DELETE']
+    origin: "*"
+    
   }
 })
 
